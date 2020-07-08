@@ -1,0 +1,17 @@
+Endpoints
+
+Get:
+endpoint: /api/similaritems/?id=:id
+should get entry with given id
+
+Post:
+endpoint: api/similaritems/?id=:id
+should create an entry with the url Id.
+
+Put:
+endpoint: api/similaritems/?id=:id
+should update the entry with the url Id
+
+Delete:
+endpoint: api/similaritems/?id=:id
+should delete the entry with the url Id

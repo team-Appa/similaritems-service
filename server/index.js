@@ -22,6 +22,43 @@ app.get ('/api/similaritems', (req, res) => {
   });
 });
 
+//create new item
+app.post ('/api/similaritems', (req, res) => {
+  console.log(req.query.id);
+});
+
+//update an item
+app.put ('/api/similaritems', (req, res) => {
+  console.log(req.query.id);
+  var group = req.query.id;
+  Guitar.updateOne({Group: group}, function(err, response) {
+    if (err) {
+      console.log('error updating', err)
+      res.end()
+    } else {
+      console.log('success updating', response)
+      res.end()
+    }
+  })
+});
+
+//delete an item
+app.delete ('/api/similaritems', (req, res) => {
+  console.log(req.query.id);
+  var group = req.query.id;
+  Guitar.deleteOne({Group: group}, (err) => {
+    if (err) {
+      console.log('error deleting', err)
+      res.end()
+    } else {
+      console.log('success deleting')
+      res.end()
+    }
+  })
+});
+
+
+
 
 let server;
 const start = () => (server = app.listen (port, function() {
