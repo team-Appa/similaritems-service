@@ -15,6 +15,7 @@ app.get ('/api/similaritems', (req, res) => {
   Guitar.find({Group: `${group}`}, (err, data) => {
     if (err) {
       console.log ('error finding similar items data');
+      res.end()
     } else {
       res.json(data[0].SimilarItems);
     }
