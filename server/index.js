@@ -48,7 +48,7 @@ app.post ('/api/similaritems', (req, res) => {
 app.put ('/api/similaritems', (req, res) => {
   console.log(req.query.id);
   var group = req.query.id;
-  Guitar.updateOne({Group: group}, function(err, response) {
+  Guitar.updateOne({Group: group}, {Price: '$130'}, function(err, response) {
     if (err) {
       console.log('error updating', err)
       res.end()
