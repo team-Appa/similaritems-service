@@ -1,10 +1,12 @@
 const express = require('express');
 const app = express();
+const bodyParser = require('body-parser');
 const path = require('path');
 const cors = require('cors');
 const port = 3002;
 const Guitar = require('../database/Model.js');
 
+app.use(bodyParser.json());
 app.use (express.static(__dirname + '/../dist'));
 app.use(cors());
 
@@ -21,6 +23,59 @@ app.get ('/api/similaritems', (req, res) => {
     }
   });
 });
+
+//create new item
+app.post ('/api/similaritems', (req, res) => {
+  console.log(req.body);
+  Guitar.create({
+    name: req.body.name,
+    guitarImage: req.body.guitarImage,
+    Ratings: req.body.Ratings,
+    ReviewCount: req.body.ReviewCount,
+    Price: req.body.Price,
+    Condition: req.body.Condition
+  }, function(err) {
+    if(err) {
+      console.log('error adding data', err)
+    } else {
+      console.log('successful addition')
+    }
+  })
+  res.send('successful Addition')
+  res.end()
+});
+
+//update an item
+app.put ('/api/similaritems', (req, res) => {
+  console.log(req.query.id);
+  var group = req.query.id;
+  Guitar.updateOne({Group: group}, {Price: req.body.Price}, function(err, response) {
+    if (err) {
+      console.log('error updating', err)
+      res.end()
+    } else {
+      console.log('success updating', response)
+      res.end()
+    }
+  })
+});
+
+//delete an item
+app.delete ('/api/similaritems', (req, res) => {
+  console.log(req.query.id);
+  var group = req.query.id;
+  Guitar.deleteOne({Group: group}, (err) => {
+    if (err) {
+      console.log('error deleting', err)
+      res.end()
+    } else {
+      console.log('success deleting')
+      res.end()
+    }
+  })
+});
+
+
 
 
 let server;
