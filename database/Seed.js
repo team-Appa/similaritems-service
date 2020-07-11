@@ -63,16 +63,18 @@ const seedDB = function() {
   return data;
 };
 
+console.log(seedDB()[0])
 
-//seeder function
-const insertData = function() {
-  var data = seedDB();
-  Guitar.create(data)/* , function(err) {
-    if (err) { console.log('error seeding:', err); }
-  }) */
-    .then(() => db.close())
-    .catch(err => console.log(err));
-};
 
-insertData();
+// //seeder function
+// const insertData = function() {
+//   var data = seedDB();
+//   Guitar.create(data)/* , function(err) {
+//     if (err) { console.log('error seeding:', err); }
+//   }) */
+//     .then(() => db.close())
+//     .catch(err => console.log(err));
+// };
+
+// insertData();
 
