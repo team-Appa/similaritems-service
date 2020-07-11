@@ -106,5 +106,5 @@ write()
 }
 
 writeTenMillionItems(writeItems, 'utf-8', () => {
-  writeItems.end();
+  writeItems.end(console.log("write is complete"));
 });
