@@ -24,50 +24,7 @@ var conditionGenerator = function() {
   }
 };
 
-// var arr = [];
 var count = 1;
-// var itemGenerator = function() {
-//   var numberOfItems = Math.floor(Math.random() * 6 + 3);
-//   for(var i = 0; i <= numberOfItems; i++) {
-//     var itemDescription = {
-//       name: faker.company.companyName() + '\n' + faker.commerce.productAdjective() + '\n' + faker.commerce.productName() + '\n' + faker.commerce.color(),
-//       guitarImage: imageGenerator(),
-//       Ratings: Math.floor(Math.random() * 5),
-//       ReviewCount: Math.floor(Math.random() * 500),
-//       Price: '$' + faker.commerce.price(),
-//       Condition: conditionGenerator(),
-//       itemNum: count,
-//       newLine: '/n'
-//     };
-//     arr.push(itemDescription)
-//   }
-//   count++
-// }
-
-
-// var dataGeneration = function() {
-//   var num = 0;
-//   var helper = function() {
-//     for (var i = 0; i < 10000; i++) {
-//       itemGenerator()
-//     }
-//     let csv = JSONToCSV.parse(arr, {fields: ['name', 'guitarImage', 'Ratings', 'ReviewCount', 'Price', 'Condition', 'itemNum']});
-//     fs.appendFile('./data.csv', csv, function(err) {
-//       if(err) {
-//         console.log(err, 'error sending data')
-//       }
-//     })
-//     arr = [];
-//   }
-
-//   while(num < 100) {
-//     helper()
-//     num++
-//   }
-// }
-
-// dataGeneration()
-
 
 // Write the data to the supplied writable stream one million times.
 // Be attentive to back-pressure.
