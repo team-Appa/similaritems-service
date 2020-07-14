@@ -38,3 +38,20 @@ npm install -g webpack
 npm install
 ```
 
+-Set Up postgresql database
+npm run seed-pgdb
+
+-Seed data to database
+psql
+\c similaritems
+
+(set items)
+COPY items(item1,item2,item3,item4,item5,item6,"itemNum")
+FROM '/home/chelese/SDC/Table-service/database/data.csv'
+DELIMITER ',' CSV HEADER;
+
+(set similar items)
+COPY similars(name,guitarimage,ratings,reviewcount,price,condition,"itemNum")
+FROM '/home/chelese/SDC/Table-service/database/similaritems.csv'
+DELIMITER ';' CSV HEADER;
+

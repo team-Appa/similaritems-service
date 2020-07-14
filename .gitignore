@@ -27,3 +27,4 @@ build/
 # CSV Files
 database/data.csv
 database/similaritems.csv
+database/config.js
