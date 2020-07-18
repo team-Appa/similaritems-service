@@ -28,3 +28,4 @@ build/
 database/data.csv
 database/similaritems.csv
 database/config.js
+script.js
