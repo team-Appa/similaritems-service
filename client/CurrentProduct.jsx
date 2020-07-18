@@ -130,7 +130,7 @@ class CurrentProduct extends React.Component {
         <Name>{this.props.product.name}</Name>
         <Rating>
           <StarRatings
-            rating={Number(this.props.product.Ratings)}
+            rating={Number(this.props.product.ratings)}
             starRatedColor=	'#ffb400'
             nnumberOfStars={5}
             starDimension="15px"

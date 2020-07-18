@@ -106,7 +106,7 @@ class FeedListItem extends React.Component {
       <React.Fragment>
         <Banner />
         <Image>
-          <img src={this.props.item.guitarImage} width="100" height="75"/>
+          <img src={this.props.item.guitarimage} width="100" height="75"/>
         </Image>
         <Wrapper>
           <Button onClick={this.handleClick}>{this.state.button}</Button>
@@ -114,16 +114,16 @@ class FeedListItem extends React.Component {
         <Name>{this.props.item.name}</Name>
         <Rating>
           <StarRatings
-            rating={Number(this.props.item.Ratings)}
+            rating={Number(this.props.item.ratings)}
             starRatedColor=	'#ffb400'
             nnumberOfStars={5}
             starDimension="15px"
             starSpacing="1px"
           />
-          ({this.props.item.ReviewCount})
+          ({this.props.item.reviewcount})
         </Rating>
-        <Price>{this.props.item.Price}</Price>
-        <Condition>{this.props.item.Condition}</Condition>
+        <Price>{this.props.item.price}</Price>
+        <Condition>{this.props.item.condition}</Condition>
       </React.Fragment>
     );
   }

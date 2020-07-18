@@ -42,7 +42,7 @@ function writeOneHundredThousandSimilarItems(writer, encoding, callback) {
       const ReviewCount = Math.floor(Math.random() * 500);
       const Price = '$' + faker.commerce.price();
       const Condition = conditionGenerator();
-      const itemNum = count;
+      const itemNum = id;
       const data = `${name};${guitarImage};${Ratings};${ReviewCount};${Price};${Condition};${itemNum}\n`;
       if (i === 0) {
         writer.write(data, encoding, callback);

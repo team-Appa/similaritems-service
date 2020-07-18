@@ -1,28 +1,82 @@
 const express = require('express');
+const nr = require('newrelic');
 const app = express();
 const bodyParser = require('body-parser');
 const path = require('path');
 const cors = require('cors');
 const port = 3002;
 const Guitar = require('../database/Model.js');
+const Items = require('../database/items.js');
+const Similar = require('../database/similar.js');
 
 app.use(bodyParser.json());
 app.use (express.static(__dirname + '/../dist'));
 app.use(cors());
 
-//return data by groupID
+
 app.get ('/api/similaritems', (req, res) => {
-  console.log(req.query.id);
-  var group = req.query.id;
-  Guitar.find({Group: `${group}`}, (err, data) => {
-    if (err) {
-      console.log ('error finding similar items data');
-      res.end()
-    } else {
-      res.json(data[0].SimilarItems);
-    }
-  });
+  Items.findAll({where: {itemNum : req.query.id}})
+    .then((result) => {
+      var itemsObj = result[0].dataValues;
+      var arr = [];
+      var num = 1;
+        Similar.findAll({where: {"itemNum": itemsObj['item' + num]}})
+          .then((result) => {
+            arr.push(result[0].dataValues)
+            return num + 1;
+          })
+          .then((newNum) => {
+            Similar.findAll({where: {"itemNum": itemsObj['item' + newNum]}})
+            .then((result) => {
+              arr.push(result[0].dataValues)
+            })
+            return newNum + 1;
+          })
+          .then((newNum) => {
+            Similar.findAll({where: {"itemNum": itemsObj['item' + newNum]}})
+            .then((result) => {
+              arr.push(result[0].dataValues)
+            })
+            return newNum + 1;
+          })
+          .then((newNum) => {
+            Similar.findAll({where: {"itemNum": itemsObj['item' + newNum]}})
+            .then((result) => {
+              arr.push(result[0].dataValues)
+            })
+            return newNum + 1;
+          })
+          .then((newNum) => {
+            Similar.findAll({where: {"itemNum": itemsObj['item' + newNum]}})
+            .then((result) => {
+              arr.push(result[0].dataValues)
+            })
+            return newNum + 1;
+          })
+          .then((newNum) => {
+            Similar.findAll({where: {"itemNum": itemsObj['item' + newNum]}})
+            .then((result) => {
+              arr.push(result[0].dataValues)
+              res.json(arr)
+              res.end();
+            })
+          })
+    })
 });
+//return data by groupID
+// app.get ('/api/similaritems', (req, res) => {
+//   console.log(req.query.id);
+//   var group = req.query.id;
+//   Guitar.find({Group: `${group}`}, (err, data) => {
+//     if (err) {
+//       console.log ('error finding similar items data');
+//       res.end()
+//     } else {
+//       console.log(data[0].SimilarItems)
+//       res.json(data[0].SimilarItems);
+//     }
+//   });
+// });
 
 //create new item
 app.post ('/api/similaritems', (req, res) => {

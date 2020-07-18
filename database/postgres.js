@@ -19,58 +19,6 @@ sequelize.authenticate()
       console.log('Unable to connect :(', err)
     })
 
-sequelize.sync({force: true})
+sequelize.sync()
 
-const items = sequelize.define('items', {
-  item1: {
-    type: Sequelize.INTEGER
-},
-  item2: {
-    type: Sequelize.STRING
-  },
-  item3: {
-    type: Sequelize.INTEGER
-},
-  item4: {
-    type: Sequelize.STRING
-  },
-  item5: {
-    type: Sequelize.INTEGER
-},
-  item6: {
-    type: Sequelize.STRING
-  },
-  itemNum: {
-    type: Sequelize.INTEGER,
-    primaryKey: true
-  }
-},  {
-  timestamps: false
-})
-
-const similar = sequelize.define('similar', {
-  name: {
-    type: Sequelize.STRING
-},
-  guitarimage: {
-    type: Sequelize.STRING
-  },
-  ratings: {
-    type: Sequelize.INTEGER
-},
-  reviewcount: {
-    type: Sequelize.INTEGER
-  },
-  price: {
-    type: Sequelize.STRING
-},
-  condition: {
-    type: Sequelize.STRING
-  },
-  itemNum: {
-    type: Sequelize.INTEGER,
-    primaryKey: true
-  }
-},  {
-  timestamps: false
-})
+module.exports = {sequelize};
