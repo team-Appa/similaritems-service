@@ -122,7 +122,7 @@ class CurrentProduct extends React.Component {
           Current<br></br>Product
         </Banner>
         <Image>
-          <img src={this.props.product.guitarImage} width="100" height="75"/>
+          <img src={this.props.product.guitarimage} width="100" height="75"/>
         </Image>
         <Wrapper>
           <Button onClick={this.handleClick}>{this.state.button}</Button>
@@ -136,10 +136,10 @@ class CurrentProduct extends React.Component {
             starDimension="15px"
             starSpacing="1px"
           />
-          ({this.props.product.ReviewCount})
+          ({this.props.product.reviewcount})
         </Rating>
-        <Price>{this.props.product.Price}</Price>
-        <Condition>{this.props.product.Condition}</Condition>
+        <Price>{this.props.product.price}</Price>
+        <Condition>{this.props.product.condition}</Condition>
       </React.Fragment>
     );
   }
